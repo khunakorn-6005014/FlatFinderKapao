@@ -1,0 +1,104 @@
+<form [formGroup]="flatForm">
+  <p>ADD NEW FLATS</p>
+  <div>
+    <label for="city">City</label>
+    <input id="city" matInput formControlName="city" required>
+  </div>
+  <div>
+    <label for="streetname">Street Name</label>
+    <input id="streetname" matInput formControlName="streetname" required>
+  </div>
+  <div>
+    <label for="streetnumber">Street Number</label>
+    <input id="streetnumber" matInput formControlName="streetnumber" required>
+  </div>
+  <div>
+    <label for="areasize">Area Size</label>
+    <input id="areasize" matInput formControlName="areasize" required>
+  </div>
+  <div>
+    <label for="hasAC">Has AC</label>
+    <input id="hasAC" type="checkbox" matInput formControlName="hasAC">
+  </div>
+  <div>
+    <label for="yearbuilt">Year Built</label>
+    <input id="yearbuilt" matInput formControlName="yearbuilt" required>
+  </div>
+  <div>
+    <label for="rentprice">Rent Price</label>
+    <input id="rentprice" matInput formControlName="rentprice" required>
+  </div>
+  <div>
+    <label for="dateavailable">Date Available</label>
+    <input id="dateavailable" type="date" matInput formControlName="dateavailable" required>
+  </div>
+  <button mat-raised-button color="primary" (click)="addNewFlat()">Add Flat</button>
+</form>
+
+<table mat-table [dataSource]="flats" class="mat-elevation-z8">
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef> City </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.city}} </td>
+  </ng-container>
+  <ng-container matColumnDef="streetname">
+    <th mat-header-cell *matHeaderCellDef> Street Name </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.streetname}} </td>
+  </ng-container>
+  <ng-container matColumnDef="streetnumber">
+    <th mat-header-cell *matHeaderCellDef> Street Number </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.streetnumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="areasize">
+    <th mat-header-cell *matHeaderCellDef> Area Size </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.areasize}} </td>
+  </ng-container>
+  <ng-container matColumnDef="hasAC">
+    <th mat-header-cell *matHeaderCellDef> Has AC </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.hasAC ? 'Yes' : 'No'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="yearbuilt">
+    <th mat-header-cell *matHeaderCellDef> Year Built </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.yearbuilt}} </td>
+  </ng-container>
+  <ng-container matColumnDef="rentprice">
+    <th mat-header-cell *matHeaderCellDef> Rent Price </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.rentprice}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dateavailable">
+    <th mat-header-cell *matHeaderCellDef> Date Available </th>
+    <td mat-cell *matCellDef="let flat"> {{flat.dateavailable | date:'yyyy-MM-dd'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let flat">
+      <button mat-icon-button (click)="viewFlat(flat)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editFlat(flat)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteFlat(flat)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- Modal Container for Viewing Flat Details -->
+<div class="modal" *ngIf="selectedFlatInfo">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <app-flat-details [flatInfo]="selectedFlatInfo"></app-flat-details>
+  </div>
+</div>
+
+<!-- Modal Container for Editing Flat Details -->
+<div class="modal" *ngIf="FlatEdit">
+  <div class="modal-content">
+    <span class="close" (click)="closeEditModal()">&times;</span>
+    <app-edit-flat [FlatEdit]="FlatEdit"></app-edit-flat>
+  </div>
+</div>

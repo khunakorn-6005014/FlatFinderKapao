@@ -1,0 +1,24 @@
+<mat-toolbar color="accent">
+  <div class="nav">
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon style="color:antiquewhite">menu</mat-icon>
+    </button>
+  </div>
+  <div class="navbar">
+    <ul class="navigation-items">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/search-flats">Search Flats</a></li>
+      <li><a [routerLink]="['/my-profile', loginService.loggedInProfile?.username]">MyProfile</a></li>
+      <li><a routerLink="/my-flats">MyFlats</a></li>
+      <li><a routerLink="/favourites">Favourites</a></li>
+      <li class="float-right"><a routerLink="/register">Register</a></li>
+      <ng-container *ngIf="isLoggedIn; else loginTemplate">
+        <li class="float-right"><a (click)="onLogout()">Logout</a></li>
+      </ng-container>
+      <ng-template #loginTemplate>
+        <li class="float-right"><a routerLink="/login">Login</a></li>
+      </ng-template>
+    </ul>
+  </div>
+</mat-toolbar>
+

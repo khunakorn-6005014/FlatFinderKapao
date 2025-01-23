@@ -1,0 +1,31 @@
+<div *ngIf="flatInfo">
+  <h3>Flat Details</h3>
+  <p><strong>City:</strong> {{flatInfo.city}}</p>
+  <p><strong>Street Name:</strong> {{flatInfo.streetname}}</p>
+  <p><strong>Street Number:</strong> {{flatInfo.streetnumber}}</p>
+  <p><strong>Area Size:</strong> {{flatInfo.areasize}}</p>
+  <p><strong>Has AC:</strong> {{flatInfo.hasAC ? 'Yes' : 'No'}}</p>
+  <p><strong>Year Built:</strong> {{flatInfo.yearbuilt}}</p>
+  <p><strong>Rent Price:</strong> {{flatInfo.rentprice}}</p>
+  <p><strong>Date Available:</strong> {{flatInfo.dateavailable | date:'yyyy-MM-dd'}}</p>
+
+  <h4>Comments</h4>
+  <ul>
+    <li *ngFor="let comment of comments">{{comment}}</li>
+  </ul>
+  <form [formGroup]="commentForm">
+    <input matInput formControlName="comment" placeholder="Add a comment">
+    <button mat-raised-button color="primary" (click)="addComment()">Add Comment</button>
+  </form>
+
+  <h4>Rating</h4>
+  <div>
+    <span *ngFor="let star of [1,2,3,4,5]" (click)="rating = star">
+      <mat-icon>{{star <= rating ? 'star' : 'star_border'}}</mat-icon>
+    </span>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="saveDetails()">Save</button>
+</div>
+
+  

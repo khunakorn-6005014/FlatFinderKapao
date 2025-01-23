@@ -1,0 +1,88 @@
+mat-sidenav-container {
+    height: 100vh;
+  }
+  
+  /* Style for the side navigation */
+  mat-sidenav {
+    width: 250px;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Style for mat-sidenav-content */
+  mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* Style the main content area */
+  main {
+    flex: 1;
+    padding: 16px;
+    background-color: #fafafa; /* Light background for readability */
+  }
+  
+  /* Ensure the header is fixed at the top */
+  mat-toolbar {
+    position: fixed;
+    width: calc(100% - 250px); /* Adjust for sidenav width */
+    z-index: 1000; /* Ensure it stays on top */
+    background-color: #1976d2; /* Material Design primary color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style navigation items */
+  .navigation-items {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Style individual navigation items */
+  .navigation-items li {
+    margin: 0 16px;
+  }
+  
+  .navigation-items a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .navigation-items a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Style for the side-nav-list items */
+  .mat-nav-list a[mat-list-item] {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-caption {
+    margin-left: 16px;
+    font-weight: 500;
+  }
+  
+  /* Style the mat-icon in side-nav-list */
+  .mat-icon {
+    margin-right: 8px;
+    color: #757575;
+  }
+  
+  /* Hover effect for nav items */
+  .mat-nav-list a[mat-list-item]:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }

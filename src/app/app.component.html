@@ -1,0 +1,9 @@
+<app-header (sideNavToggle)="toggleSidenav()"></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

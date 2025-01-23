@@ -1,0 +1,42 @@
+<div class="modal" *ngIf="FlatEdit">
+    <div class="modal-content">
+      <span class="close" (click)="closeEditModal()">&times;</span>
+      <form [formGroup]="editForm">
+        <h3>Edit Flat</h3>
+        <div>
+          <label for="edit-city">City</label>
+          <input id="edit-city" matInput formControlName="city">
+        </div>
+        <div>
+          <label for="edit-streetname">Street Name</label>
+          <input id="edit-streetname" matInput formControlName="streetname">
+        </div>
+        <div>
+          <label for="edit-streetnumber">Street Number</label>
+          <input id="edit-streetnumber" matInput formControlName="streetnumber">
+        </div>
+        <div>
+          <label for="edit-areasize">Area Size</label>
+          <input id="edit-areasize" matInput formControlName="areasize">
+        </div>
+        <div>
+          <label for="edit-hasAC">Has AC</label>
+          <input id="edit-hasAC" type="checkbox" matInput formControlName="hasAC">
+        </div>
+        <div>
+          <label for="edit-yearbuilt">Year Built</label>
+          <input id="edit-yearbuilt" matInput formControlName="yearbuilt">
+        </div>
+        <div>
+          <label for="edit-rentprice">Rent Price</label>
+          <input id="edit-rentprice" matInput formControlName="rentprice">
+        </div>
+        <div>
+          <label for="edit-dateavailable">Date Available</label>
+          <input id="edit-dateavailable" type="date" matInput formControlName="dateavailable">
+        </div>
+        <button mat-raised-button color="primary" (click)="updateFlat()">Update</button>
+      </form>
+    </div>
+  </div>
+  

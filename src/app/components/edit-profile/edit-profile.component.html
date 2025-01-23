@@ -1,0 +1,31 @@
+<form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstname">First Name</label>
+    <input id="firstname" matInput formControlName="firstname" required>
+  </div>
+  <div>
+    <label for="lastname">Last Name</label>
+    <input id="lastname" matInput formControlName="lastname" required>
+  </div>
+  <div>
+    <label for="username">Username (Email)</label>
+    <input id="username" matInput formControlName="username" [disabled]="true" required>
+  </div>
+  <div>
+    <label for="birthDate">Birth Date</label>
+    <input id="birthDate" matInput formControlName="birthDate" type="date" required>
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input id="address" matInput formControlName="address" required>
+  </div>
+  <div>
+    <label for="newPassword">New Password</label>
+    <input id="newPassword" matInput formControlName="newPassword" type="password">
+  </div>
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input id="confirmPassword" matInput formControlName="confirmPassword" type="password">
+  </div>
+  <button mat-raised-button color="primary" type="submit">Update Profile</button>
+</form>

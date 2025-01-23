@@ -1,0 +1,14 @@
+mat-icon {
+    cursor: pointer;
+    color: #ffb400;
+    margin: 0 4px;
+  }
+  input[matInput] {
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    align-self: flex-end;
+  }

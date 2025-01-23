@@ -1,0 +1,17 @@
+<mat-card *ngIf="profile">
+  <mat-card-header>
+    <mat-card-title>{{ profile.firstname }} {{ profile.lastname }}</mat-card-title>
+    <mat-card-subtitle>{{ profile.username }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Email:</strong> {{ profile.email }}</p>
+    <p><strong>Birth Date:</strong> {{ getFormattedDate(profile.birthDate) }}</p>
+    <p><strong>Address:</strong> {{ profile.address }}</p>
+    <p *ngIf="profile.isAdmin"><strong>Role:</strong> Admin</p>
+    <p *ngIf="!profile.isAdmin"><strong>Role:</strong> User</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="canEditProfile()">
+    <button mat-button (click)="onEditProfile()">Edit Profile</button>
+  </mat-card-actions>
+</mat-card>
+

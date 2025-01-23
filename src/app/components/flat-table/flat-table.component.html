@@ -1,0 +1,69 @@
+<div class="filters">
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput [(ngModel)]="cityFilter" placeholder="Filter by city" (ngModelChange)="filterFlats()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Min Price</mat-label>
+      <input matInput type="number" [(ngModel)]="priceRange.min" placeholder="Min Price" (ngModelChange)="filterFlats()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max Price</mat-label>
+      <input matInput type="number" [(ngModel)]="priceRange.max" placeholder="Max Price" (ngModelChange)="filterFlats()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Min Area Size</mat-label>
+      <input matInput type="number" [(ngModel)]="areaSizeRange.min" placeholder="Min Area Size" (ngModelChange)="filterFlats()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max Area Size</mat-label>
+      <input matInput type="number" [(ngModel)]="areaSizeRange.max" placeholder="Max Area Size" (ngModelChange)="filterFlats()">
+    </mat-form-field>
+  </div>
+  
+  <table mat-table [dataSource]="filteredFlats" class="mat-elevation-z8">
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.city}} </td>
+    </ng-container>
+    <ng-container matColumnDef="streetname">
+      <th mat-header-cell *matHeaderCellDef> Street Name </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.streetname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="streetnumber">
+      <th mat-header-cell *matHeaderCellDef> Street Number </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.streetnumber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="areasize">
+      <th mat-header-cell *matHeaderCellDef> Area Size </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.areasize}} </td>
+    </ng-container>
+    <ng-container matColumnDef="hasAC">
+      <th mat-header-cell *matHeaderCellDef> Has AC </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.hasAC ? 'Yes' : 'No'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="yearbuilt">
+      <th mat-header-cell *matHeaderCellDef> Year Built </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.yearbuilt}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rentprice">
+      <th mat-header-cell *matHeaderCellDef> Rent Price </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.rentprice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateavailable">
+      <th mat-header-cell *matHeaderCellDef> Date Available </th>
+      <td mat-cell *matCellDef="let flat"> {{flat.dateavailable | date:'yyyy-MM-dd'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="isFavorite">
+      <th mat-header-cell *matHeaderCellDef> Favorite </th>
+      <td mat-cell *matCellDef="let flat">
+        <button mat-icon-button (click)="toggleFavorite(flat)">
+          <mat-icon>{{flat.isFavorite ? 'favorite' : 'favorite_border'}}</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
