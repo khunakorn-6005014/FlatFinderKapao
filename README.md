@@ -19,6 +19,22 @@ FlatFinder is an application designed to help users search for and manage their 
 
 <img src="readme_img/homepage2.png" width=500 />
 
+## Enabling Billing and Deploying to Firebase
+
+To use Firebase features in production, you need to enable billing for your Firebase project. Follow these steps:
+
+1. Go to the [Firebase Console](https://console.firebase.google.com/).
+2. Select your `flatfinder-96333` project.
+3. Enable billing in the **Billing** section.
+
+### Build and Deploy
+
+To build and deploy the project to Firebase, run:
+
+```sh
+ng build --prod
+firebase deploy
+```
 ## Development server
 
 To start a local development server, run:
