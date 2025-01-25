@@ -13,8 +13,8 @@ FlatFinder is an application designed to help users search for and manage their 
 - Angular Material for UI components
 
 ## login detail
-- username/password:
-  wongsriprasert@gmail.com/123456
+-first options: username/password: wongsriprasert@gmail.com/123456
+-second option: register
 ## Home page
 
 <img src="readme_img/homepage2.png" width=500 />

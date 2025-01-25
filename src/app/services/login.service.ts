@@ -3,6 +3,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { initializedFirebase } from '../initializedFirebase';
+import { getAuth, UserCredential } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 export interface Profile {
   username: string;
@@ -24,7 +27,7 @@ export class LoginService {
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     if (!environment.production) {
-      this.firestore.firestore.settings({ host: 'localhost:8080', ssl: false , merge: true });
+      this.firestore.firestore.settings({ host: 'localhost:8080', ssl: false });
     }
     this.loadProfiles();
   }
@@ -130,4 +133,12 @@ export class LoginService {
       return null;
     }
   }
+  //
+  tryFbLogin(username: string, pwd: string): Promise<UserCredential> {
+    const auth = getAuth(initializedFirebase);
+    const email = username;
+    const password = pwd;
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 }
+

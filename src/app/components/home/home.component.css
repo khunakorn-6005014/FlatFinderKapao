@@ -13,7 +13,7 @@ body {
   font-size: 10px; /* Added units for font-size */
 }
 .hero-image {
-  background-image: url("/assets/readme_img/LINE6.jpg"); /* Corrected path */
+  background-image: url("/assets/readme_img/LINE6.png"); /* Corrected path */
   background-color: black;
   height: 500px;
   background-position: center;

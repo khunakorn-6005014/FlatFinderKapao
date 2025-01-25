@@ -31,16 +31,16 @@ export class LoginComponent {
       const { username, password } = this.loginForm.value;
       try {
         console.log('Attempting login.');
-        const profile = await this.loginService.tryLogin(username!, password!);
-        if (profile) {
-          console.log('Login successful, navigating to home');
-          this.router.navigate(['/home']);
-        } else {
-          alert('Login failed. try again.');
-        }
-      } catch (error) {
-        console.error('Login error:', error);
-        alert('Login failed due to error.  try again.');
+        this.loginService.tryFbLogin(username!, password!)
+          .then((_) => {
+            console.log('Login successful, navigating to home');
+            this.router.navigate(['/home']);
+          })
+          .catch((_) => {
+            alert('Login failed. Try again.');
+          });
+      } catch (_) {
+        alert('Something went wrong.');
       }
     } else {
       alert('Please fill out all required fields.');
